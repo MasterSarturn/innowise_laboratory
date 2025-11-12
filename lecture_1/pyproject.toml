@@ -1,0 +1,9 @@
+[project]
+name = "lecture_1_project" 
+version = "0.1.0"
+description = "A simple project printing colored Hello World"
+requires-python = ">=3.8"
+
+dependencies = [
+    "colorama"
+]
