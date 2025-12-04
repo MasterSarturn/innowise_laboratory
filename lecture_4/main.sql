@@ -24,8 +24,8 @@ create table if not exists grades
      id integer primary key autoincrement,
      student_id integer not null,
      subject text not null,
-     grade integer not null check(grade >0 and grade <101), 
-     foreign key(student_id) references students(id)
+     grade integer not null check(grade BETWEEN 1 and 100), 
+     foreign key(student_id) references students(id) on delete CASCADE
      );
 -- Insert sample grade data
 insert into grades (student_id, subject, grade)
@@ -81,7 +81,7 @@ select s.full_name, avg(g.grade) as avg_grade
 from students s inner join grades g
 on s.id = g.student_id 
 group by s.full_name
-order by avg(g.grade) desc limit 3;
+order by avg_grade desc limit 3;
 -- Show all students who have scored below 80
 select distinct s.full_name
 from students s inner join grades g
